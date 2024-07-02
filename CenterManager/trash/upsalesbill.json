@@ -1,0 +1,33 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "date": "2024-05-27",
+            "notes": "Sales bill notes here",
+            "paid_type": "Cash",
+            "paid_status": 1,
+            "total_before": "1200.00",
+            "center_discount": "60.00",
+            "teacher_discount": "60.00",
+            "discount": "120.00",
+            "total_after": "1080.00",
+            "center_fee": "540.00",
+            "teacher_fee": "540.00",
+            "total_paid": "1080.00",
+            "center_paid": "540.00",
+            "teacher_paid": "540.00",
+            "total_remain": "0.00",
+            "center_remain": "0.00",
+            "teacher_remain": "0.00",
+            "bill_id": 1,
+            "class_name":"class 1",
+            "subject_name":"physiqs",
+            "remainder":"50.0"
+        }
+    ],
+    "total_remainder": "50.0",
+    "total": 1
+}
+
+
+i am not sure about the filtering relation , i think we should get the student id or code , then get

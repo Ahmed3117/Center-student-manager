@@ -12,6 +12,12 @@ router.register(r'students', views.StudentViewSet)
 router.register(r'months', views.MonthViewSet)
 router.register(r'course_attendances', views.Course_AttendanceViewSet)
 router.register(r'attendance_details', views.Attendance_DetailsViewSet)
+router.register(r'student_attendance_details/(?P<student_id>\d+)/(?P<year>\d{4})/(?P<month>\d+)', views.StudentAttendanceDetailsViewSet, basename='student_attendance_details')
+#----------------------------------------------------------------
+router.register(r'attendance-details', views.AttendanceAbsenceCountForStudentInSpecificMonthAndCourseViewSet, basename='attendance-details')
+
+#----------------------------------------------------------------
+
 router.register(r'absence_details', views.Absence_DetailsViewSet)
 router.register(r'courses', views.CourseViewSet)
 router.register(r'main_bills', views.MainBillViewSet)

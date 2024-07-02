@@ -33,16 +33,20 @@ ALLOWED_HOSTS = ['*','127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
-    # 'admin_interface',
-    # 'colorfield',
+    'admin_interface',
+    'colorfield',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rangefilter',
     'rest_framework',
     'rest_framework.authtoken', 
+    
+
+    # 'debug_toolbar',
     # 'crispy_forms',
     # 'crispy_bootstrap5',
     # 'ckeditor',
@@ -57,6 +61,7 @@ INSTALLED_APPS = [
 
 
 MIDDLEWARE = [
+    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -67,6 +72,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # 'students.middleware.BrowserFingerprintMiddleware',
 
+]
+
+INTERNAL_IPS = [
+    '127.0.0.1',
 ]
 
 ROOT_URLCONF = 'core.urls'

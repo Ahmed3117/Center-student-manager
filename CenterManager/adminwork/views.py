@@ -123,6 +123,43 @@ class CourseAttendanceByDateViewSet(viewsets.ModelViewSet):
         }
         return response
 
+class CourseAttendanceByMonthViewSet(viewsets.ModelViewSet):
+    serializer_class = Course_AttendanceSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        year_str = self.kwargs['year']
+        month_str = self.kwargs['month']
+
+        # Validate year and month format
+        try:
+            year = int(year_str)
+            month = int(month_str)
+            if month < 1 or month > 12:
+                raise ValueError("Month must be between 1 and 12")
+        except ValueError:
+            return None  
+
+        start_date = datetime(year, month, 1).date()
+        if month == 12:
+            end_date = datetime(year + 1, 1, 1).date()
+        else:
+            end_date = datetime(year, month + 1, 1).date()
+
+        return Course_Attendance.objects.filter(Q(date__gte=start_date) & Q(date__lt=end_date)).order_by('date')
+
+    @api_key_required
+    def list(self, request, *args, **kwargs):
+        if self.get_queryset() is None:
+            return Response({'error': 'Invalid year or month format'}, status=status.HTTP_400_BAD_REQUEST)
+
+        response = super().list(request, *args, **kwargs)
+        response.data = {
+            'data': response.data,
+            'total': len(response.data)
+        }
+        return response
+
 class AttendanceDetailsViewSet(viewsets.ModelViewSet):
     serializer_class = Attendance_DetailsSerializer
     permission_classes = [IsAuthenticated]
